@@ -6,16 +6,16 @@ namespace AgendaOnline.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
-            return View();
+            HomeModel home = new()
+            {
+                Nome = "Leonardo",
+                Email ="leonardo@gmail.com"
+            };
+
+            return View(home);
         }
 
         public IActionResult Privacy()
