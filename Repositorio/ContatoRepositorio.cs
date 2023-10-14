@@ -19,5 +19,10 @@ namespace AgendaOnline.Repositorio
             _context.SaveChanges();
             return contato;
         }
+
+        public List<Contato> BuscarTodos()
+        {
+            return _context.Contatos.ToList();
+        }
     }
 }

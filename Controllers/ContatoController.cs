@@ -18,7 +18,8 @@ namespace AgendaOnline.Controllers
         #region - GET
         public IActionResult Index()
         {
-            return View();
+            var contatos = _contatoRepositorio.BuscarTodos();
+            return View(contatos);
         }
 
         public IActionResult Criar()
