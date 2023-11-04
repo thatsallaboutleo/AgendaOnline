@@ -27,9 +27,11 @@ namespace AgendaOnline.Controllers
             return View();
         }
 
-        public IActionResult DeletarConfirmacao()
+        [HttpGet]
+        public IActionResult Apagar(int id)
         {
-            return View();
+            _contatoRepositorio.Apagar(id);
+            return RedirectToAction("Index");
         }
         #endregion
 
@@ -51,6 +53,14 @@ namespace AgendaOnline.Controllers
 
         #region - PUT
         public IActionResult Editar(int id)
+        {
+            Contato c = _contatoRepositorio.BuscarId(id);
+            return View(c);
+        }
+        #endregion
+
+        #region - Delete
+        public IActionResult DeletarConfirmacao(int id)
         {
             Contato c = _contatoRepositorio.BuscarId(id);
             return View(c);

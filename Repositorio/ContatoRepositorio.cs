@@ -20,6 +20,16 @@ namespace AgendaOnline.Repositorio
             return contato;
         }
 
+        public bool Apagar(int id)
+        {
+            Contato cDb = BuscarId(id);
+            if (cDb == null) throw new Exception("Houve um erro na deleção do contato.");
+
+            _context.Contatos.Remove(cDb);
+            _context.SaveChanges();
+            return true;
+        }
+
         public Contato Atualizar(Contato contato)
         {
             Contato cDb = BuscarId(contato.Id);

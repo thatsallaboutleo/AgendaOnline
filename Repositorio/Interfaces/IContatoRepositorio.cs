@@ -6,6 +6,7 @@ namespace AgendaOnline.Repositorio.Interfaces
     {
         Contato Adicionar(Contato contato);
         Contato Atualizar(Contato contato);
+        bool Apagar(int id);
         List<Contato> BuscarTodos();
         Contato BuscarId(int id);
     }
