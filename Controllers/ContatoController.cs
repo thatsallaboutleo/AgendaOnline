@@ -27,11 +27,6 @@ namespace AgendaOnline.Controllers
             return View();
         }
 
-        public IActionResult Editar()
-        {
-            return View();
-        }
-
         public IActionResult DeletarConfirmacao()
         {
             return View();
@@ -44,6 +39,21 @@ namespace AgendaOnline.Controllers
         {
             _contatoRepositorio.Adicionar(contato);
             return RedirectToAction("Index");
+        }
+        
+        [HttpPost]
+        public IActionResult Alterar(Contato contato)
+        {
+            _contatoRepositorio.Atualizar(contato);
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region - PUT
+        public IActionResult Editar(int id)
+        {
+            Contato c = _contatoRepositorio.BuscarId(id);
+            return View(c);
         }
         #endregion
     }
