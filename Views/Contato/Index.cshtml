@@ -30,7 +30,7 @@
 
     <h1 class="display-4">Listagem de Contatos</h1>
 
-    <table class="table">
+    <table class="table" id="tbnContatos">
         <thead>
             <tr>
                 <th scope="col" hidden="hidden">#</th>
@@ -43,7 +43,7 @@
         <tbody>
             @if (Model != null && Model.Any())
             {
-                foreach (Contato contato in Model)
+                foreach (var contato in Model)
                 {
                     <tr>
                         <th scope="row" hidden="hidden">@contato.Id</th>
@@ -58,6 +58,10 @@
                         </td>
                     </tr>
                 }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum contato encontrado!</td></tr>
             }
         </tbody>
     </table>
