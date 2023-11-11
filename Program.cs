@@ -15,6 +15,7 @@ builder.Services.AddDbContext<BancoContext>(o => o.UseSqlServer("Server=./;Datab
 
 #region - Repositorios
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 #endregion
 
 var app = builder.Build();

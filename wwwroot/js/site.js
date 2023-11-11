@@ -1,5 +1,10 @@
 ﻿$(document).ready(function () {
-    $('#tbnContatos').DataTable({
+    contruirDataTable('#tbnContatos');
+    contruirDataTable('#tbnUsuarios');
+});
+
+function contruirDataTable(tableId) {
+    $(tableId).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -27,7 +32,7 @@
             }
         }
     });
-});
+}
 
 $('.close-alert').click(function () {
     $('.alert').hide('hide')
