@@ -9,21 +9,25 @@
 </div>
 
 <form asp-controller="Contato" asp-action="Criar" method="post">
+    
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" asp-for="Nome" class="form-control" placeholder="Nome do contato">
+        @Html.ValidationMessageFor(x=>x.Nome)
     </div>
     <br />
 
     <div class="form-group">
         <label for="email">E-mail</label>
         <input type="email" asp-for="Email" class="form-control" placeholder="E-mail do contato">
+        @Html.ValidationMessageFor(x=>x.Email)
     </div>
     <br />
 
     <div class="form-group">
         <label for="telefone">Telefone</label>
         <input type="text" asp-for="Telefone" class="form-control" placeholder="Telefone do contato">
+        @Html.ValidationMessageFor(x=>x.Telefone)
     </div>
     <br />
 

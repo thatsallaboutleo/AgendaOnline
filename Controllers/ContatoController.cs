@@ -30,8 +30,24 @@ namespace AgendaOnline.Controllers
         [HttpGet]
         public IActionResult Apagar(int id)
         {
-            _contatoRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool apagou = _contatoRepositorio.Apagar(id);
+                if (apagou)
+                {
+                    TempData["MsgSucesso"] = "Contato deletado com sucesso";
+                }
+                else
+                {
+                    TempData["MsgErro"] = "Não foi possivel deletar o contato";
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["MsgErro"] = $"Algo deu errado! Não foi possivel deletar o contato, erro: {e.Message}";
+                return RedirectToAction("Index"); ;
+            }
         }
         #endregion
 
@@ -39,15 +55,41 @@ namespace AgendaOnline.Controllers
         [HttpPost]
         public IActionResult Criar(Contato contato)
         {
-            _contatoRepositorio.Adicionar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Adicionar(contato);
+                    TempData["MsgSucesso"] = "Contato cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View(contato);
+            }
+            catch (Exception e)
+            {
+                TempData["MsgErro"] = $"Algo deu errado! Não foi possivel cadastrar o contato, erro: {e.Message}";
+                return RedirectToAction("Index");
+            }
         }
         
         [HttpPost]
         public IActionResult Alterar(Contato contato)
         {
-            _contatoRepositorio.Atualizar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Atualizar(contato);
+                    TempData["MsgSucesso"] = "Contato atualizado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View("Editar", contato);
+            }
+            catch (Exception e)
+            {
+                TempData["MsgErro"] = $"Algo deu errado! Não foi possivel atualizar o contato, erro: {e.Message}";
+                return RedirectToAction("Index");
+            }
         }
         #endregion
 
