@@ -4,6 +4,8 @@ namespace AgendaOnline.Repositorio.Interfaces
 {
     public interface IUsuarioRepositorio
     {
+        Usuario BuscarPorLogin(string login);
+
         List<Usuario> BuscarTodos();
         Usuario BuscarId(int id);
         Usuario Adicionar(Usuario usuario);

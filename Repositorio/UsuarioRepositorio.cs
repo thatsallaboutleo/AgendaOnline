@@ -13,6 +13,12 @@ namespace AgendaOnline.Repositorio
             _context = context;
         }
 
+
+        public Usuario BuscarPorLogin(string login)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+        }
+
         public Usuario Adicionar(Usuario usuario)
         {
             usuario.DataCadastro = DateTime.Now;
