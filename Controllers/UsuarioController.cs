@@ -1,10 +1,11 @@
-﻿using AgendaOnline.Models;
-using AgendaOnline.Repositorio;
+﻿using AgendaOnline.Filters;
+using AgendaOnline.Models;
 using AgendaOnline.Repositorio.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaOnline.Controllers
 {
+    [PagParaAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;

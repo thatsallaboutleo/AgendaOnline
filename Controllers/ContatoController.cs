@@ -1,9 +1,11 @@
-﻿using AgendaOnline.Models;
+﻿using AgendaOnline.Filters;
+using AgendaOnline.Models;
 using AgendaOnline.Repositorio.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaOnline.Controllers
 {
+    [PagUsuarioLogado]
     public class ContatoController : Controller
     {
         #region - Contrutor

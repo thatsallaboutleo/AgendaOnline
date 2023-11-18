@@ -1,24 +1,14 @@
-﻿using AgendaOnline.Models;
+﻿using AgendaOnline.Filters;
+using AgendaOnline.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace AgendaOnline.Controllers
 {
+    [PagUsuarioLogado]
     public class HomeController : Controller
     {
-
         public IActionResult Index()
-        {
-            HomeModel home = new()
-            {
-                Nome = "Leonardo",
-                Email ="leonardo@gmail.com"
-            };
-
-            return View(home);
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
