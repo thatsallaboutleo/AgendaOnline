@@ -60,6 +60,24 @@ namespace AgendaOnline.Repositorio
             return uDb;
         }
 
+        public Usuario AlterarSenha(AlterarSenha alterarSenha)
+        {
+            Usuario usuarioDb = BuscarId(alterarSenha.Id);
+            if (usuarioDb == null) throw new Exception("Houve um erro na atualização da senha! Usuário não encontrato");
+
+            if (!usuarioDb.SenhaValidado(alterarSenha.SenhaAtual)) throw new Exception("Senha atual está incorreta!");
+
+            if (usuarioDb.SenhaValidado(alterarSenha.NovaSenha)) throw new Exception("Nova Senha deve ser diferente da senha atual");
+
+            usuarioDb.SetNovaSenha(alterarSenha.NovaSenha);
+            usuarioDb.DataAlteracao = DateTime.Now;
+
+            _context.Usuarios.Update(usuarioDb);
+            _context.SaveChanges();
+
+            return usuarioDb;
+        }
+
         public Usuario BuscarId(int id)
         {
             return _context.Usuarios.FirstOrDefault(x => x.Id == id);

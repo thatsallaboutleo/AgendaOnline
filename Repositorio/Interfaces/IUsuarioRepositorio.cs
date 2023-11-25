@@ -11,6 +11,7 @@ namespace AgendaOnline.Repositorio.Interfaces
         Usuario BuscarId(int id);
         Usuario Adicionar(Usuario usuario);
         Usuario Atualizar(Usuario usuario);
+        Usuario AlterarSenha(AlterarSenha alterarSenha);
         bool Apagar(int id);
     }
 }
