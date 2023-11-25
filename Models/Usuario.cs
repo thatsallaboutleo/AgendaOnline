@@ -20,6 +20,8 @@ namespace AgendaOnline.Models
         public DateTime? DataAlteracao { get; set; }
         [Required(ErrorMessage = "Informe o perfil do usuario")]
         public PerfilEnum? Perfil { get; set; }
+        
+        public virtual List<Contato> Contatos { get; set; }
 
         public bool SenhaValidado(string senha)
         {

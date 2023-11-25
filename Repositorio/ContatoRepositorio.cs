@@ -49,9 +49,9 @@ namespace AgendaOnline.Repositorio
             return _context.Contatos.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Contato> BuscarTodos()
+        public List<Contato> BuscarTodos(int usuarioId)
         {
-            return _context.Contatos.ToList();
+            return _context.Contatos.Where(x => x.UsuarioId == usuarioId).ToList();
         }
     }
 }

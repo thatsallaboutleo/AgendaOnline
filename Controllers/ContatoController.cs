@@ -1,4 +1,5 @@
 ﻿using AgendaOnline.Filters;
+using AgendaOnline.Helper.Interface;
 using AgendaOnline.Models;
 using AgendaOnline.Repositorio.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,17 +11,20 @@ namespace AgendaOnline.Controllers
     {
         #region - Contrutor
         private readonly IContatoRepositorio _contatoRepositorio;
+        private readonly ISessao _sessao;
 
-        public ContatoController(IContatoRepositorio contatoRepositorio)
+        public ContatoController(IContatoRepositorio contatoRepositorio, ISessao sessao)
         {
             _contatoRepositorio = contatoRepositorio;
+            _sessao = sessao;
         }
         #endregion
 
         #region - GET
         public IActionResult Index()
         {
-            var contatos = _contatoRepositorio.BuscarTodos();
+            Usuario usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+            var contatos = _contatoRepositorio.BuscarTodos(usuarioLogado.Id);
             return View(contatos);
         }
 
@@ -61,7 +65,10 @@ namespace AgendaOnline.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _contatoRepositorio.Adicionar(contato);
+                    Usuario usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+                    contato.UsuarioId = usuarioLogado.Id;
+
+                    contato = _contatoRepositorio.Adicionar(contato);
                     TempData["MsgSucesso"] = "Contato cadastrado com sucesso";
                     return RedirectToAction("Index");
                 }
@@ -81,7 +88,10 @@ namespace AgendaOnline.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _contatoRepositorio.Atualizar(contato);
+                    Usuario usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+                    contato.UsuarioId = usuarioLogado.Id;
+
+                    contato = _contatoRepositorio.Atualizar(contato);
                     TempData["MsgSucesso"] = "Contato atualizado com sucesso";
                     return RedirectToAction("Index");
                 }

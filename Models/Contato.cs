@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace AgendaOnline.Models
 {
@@ -13,5 +14,9 @@ namespace AgendaOnline.Models
         [Required(ErrorMessage = "Digite um telefone para o contato")]
         [Phone(ErrorMessage ="O celular informado não é valido")]
         public string Telefone { get; set; }
+
+        [ValidateNever]
+        public Usuario usuario { get; set;}
+        public int? UsuarioId { get; set; }
     }
 }
