@@ -9,10 +9,12 @@ namespace AgendaOnline.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IContatoRepositorio _contatoRepositorio;
 
-        public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, IContatoRepositorio contatoRepositorio)
         {
             _usuarioRepositorio = usuarioRepositorio;
+            _contatoRepositorio = contatoRepositorio;
         }
 
         #region - Rotas
@@ -38,6 +40,13 @@ namespace AgendaOnline.Controllers
             Usuario u = _usuarioRepositorio.BuscarId(id);
             return View(u);
         }
+
+        public IActionResult ListarContatosPorUsuarioId(int id)
+        {
+            List<Contato> contatos = _contatoRepositorio.BuscarTodos(id);
+            return PartialView("_ContatosUsuario", contatos);
+        }
+
         #endregion
 
         #region - POST

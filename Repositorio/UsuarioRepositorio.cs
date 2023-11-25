@@ -1,6 +1,7 @@
 ﻿using AgendaOnline.Data;
 using AgendaOnline.Models;
 using AgendaOnline.Repositorio.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgendaOnline.Repositorio
 {
@@ -85,7 +86,9 @@ namespace AgendaOnline.Repositorio
 
         public List<Usuario> BuscarTodos()
         {
-            return _context.Usuarios.ToList();
+            return _context.Usuarios
+                .Include(x => x.Contatos)
+                .ToList();
         }
     }
 }
