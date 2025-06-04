@@ -1,4 +1,4 @@
-# AgendaOnline
+# Agenda Online
 
 AgendaOnline é um sistema de agenda de contatos pessoal desenvolvido como trabalho de conclusão do curso de **Bacharelado em Análise e Desenvolvimento de Sistemas**, finalizado em **dezembro de 2023**.
 
@@ -38,27 +38,31 @@ Este projeto foi construído utilizando tecnologias modernas da stack Microsoft 
 
 1. **Clone o repositório:**
 bash
-git clone [Link](https://github.com/thatsallaboutleo/AgendaOnline.git)
+git clone https://github.com/thatsallaboutleo/AgendaOnline.git
 cd AgendaOnline
 
 2. **Configure a string de conexão no appsettings.json:**
+```
 "ConnectionStrings": {
   "DefaultConnection": "Server=SEU_SERVIDOR;Database=agendaOnlineDB;User Id=USUARIO;Password=SENHA;"
 }
+```
 
 3. **Configure os dados de envio de e-mail (mock ou real):**
+```
 "EmailSettings": {
   "SmtpServer": "smtp.exemplo.com",
   "Port": 587,
   "Username": "seuemail@exemplo.com",
   "Password": "suaSenha"
 }
+```
 
 4. **Crie e atualize o banco de dados:**
-dotnet ef database update
+```dotnet ef database update```
 
 5. **Execute o projeto:**
-dotnet run
+```dotnet run```
 
 ## 👨‍🎓 Sobre o Autor
 - Leonardo Brochetti
