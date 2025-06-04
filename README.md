@@ -1,6 +1,6 @@
-# agendaOnline
+# AgendaOnline
 
-agendaOnline é um sistema de agenda de contatos pessoal desenvolvido como trabalho de conclusão do curso de **Bacharelado em Análise e Desenvolvimento de Sistemas**, finalizado em **dezembro de 2023**.
+AgendaOnline é um sistema de agenda de contatos pessoal desenvolvido como trabalho de conclusão do curso de **Bacharelado em Análise e Desenvolvimento de Sistemas**, finalizado em **dezembro de 2023**.
 
 Este projeto foi construído utilizando tecnologias modernas da stack Microsoft e segue a arquitetura MVC, com suporte completo para registro de usuários, autenticação e recuperação de senha via e-mail.
 
@@ -60,10 +60,10 @@ dotnet ef database update
 5. **Execute o projeto:**
 dotnet run
 
-👨‍🎓 Sobre o Autor
-Leonardo Brochetti
-Projeto final do curso de Bacharelado em Análise e Desenvolvimento de Sistemas
-Conclusão: Dezembro/2023
+## 👨‍🎓 Sobre o Autor
+- Leonardo Brochetti
+- Projeto final do curso de Bacharelado em Análise e Desenvolvimento de Sistemas
+- Conclusão: Dezembro/2023
 
-📃 Licença
-Este projeto é de uso acadêmico. Caso queira utilizá-lo, sinta-se livre para estudar, adaptar ou expandir com os devidos créditos.
+## 📃 Licença
+- Este projeto é de uso acadêmico. Caso queira utilizá-lo, sinta-se livre para estudar, adaptar ou expandir com os devidos créditos.
